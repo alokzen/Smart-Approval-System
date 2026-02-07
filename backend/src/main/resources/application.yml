@@ -1,0 +1,86 @@
+spring:
+  application:
+    name: smart-approval-management-system
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/smart_approval_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        use_sql_comments: true
+    open-in-view: false
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+# File Storage Configuration
+file:
+  storage:
+    base-path: ${FILE_STORAGE_PATH:./storage/documents}
+    max-size-mb: 50
+    allowed-extensions: pdf,doc,docx,xls,xlsx,png,jpg,jpeg,txt
+    organization-based-structure: true
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:your-secret-key-change-this-in-production-minimum-256-bits}
+  expiration: 86400000 # 24 hours in milliseconds
+
+# Server Configuration
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: false
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    com.smartapproval: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  file:
+    name: logs/application.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# LLM Configuration
+llm:
+  ollama:
+    base-url: ${LLM_OLLAMA_BASE_URL:http://localhost:11434}
+    model: ${LLM_MODEL:llama3:8b}
+    timeout: ${LLM_TIMEOUT_MS:30000}
+    temperature: ${LLM_TEMPERATURE:0.3}

@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/smart_approval_db_dev?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    com.smartapproval: DEBUG
+    org.springframework.web: DEBUG
+

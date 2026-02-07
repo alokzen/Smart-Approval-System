@@ -1,0 +1,81 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Backend
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/.springBeans
+
+# Frontend
+frontend/node_modules/
+frontend/.expo/
+frontend/dist/
+frontend/web-build/
+frontend/.expo-shared/
+frontend/ios/Pods/
+frontend/android/.gradle/
+frontend/android/app/build/
+frontend/android/build/
+
+# Storage (exclude actual files, keep structure)
+storage/documents/*
+!storage/documents/.gitkeep
+storage/thumbnails/*
+!storage/thumbnails/.gitkeep
+storage/archives/*
+!storage/archives/.gitkeep
+
+# Logs
+*.log
+logs/
+backend/logs/
+frontend/logs/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Build artifacts
+*.jar
+*.war
+*.ear
+*.class
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database
+*.db
+*.sqlite
+
+# Coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+.jest/
+.coverage/
+

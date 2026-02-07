@@ -1,0 +1,3 @@
+# This directory stores all document attachments
+# Structure: storage/documents/org_{organizationId}/approval_{approvalId}/files
+
